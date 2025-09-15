@@ -1,0 +1,13 @@
+# dependencies
+mestore/node_modules
+backend/node_modules
+
+# build outputs
+mestore/dist
+backend/dist
+
+# environment variables
+*.env
+
+# misc
+.DS_Store
