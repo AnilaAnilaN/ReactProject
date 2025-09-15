@@ -1,0 +1,162 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+/* Navigation */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-item:hover > a {
+  color: var(--color-accent);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.dropdown li {
+  padding: 8px 16px;
+}
+
+.dropdown li a {
+  color: #232f3e;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown li:hover {
+  background-color: #f2f2f2;
+}
+
+/* Account */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.account .icon {
+  font-size: 1.3rem;
+}
+
+.account a {
+  text-decoration: none;
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.account a:hover {
+  color: var(--color-accent);
+}
+
+/* Responsive Breakpoints */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .nav ul {
+    gap: 16px;
+  }
+
+  .dropdown {
+    top: 30px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 16px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* hide nav by default on mobile */
+  }
+
+  .nav.active ul {
+    display: flex;
+  }
+
+  .nav-item {
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .account {
+    margin-top: 8px;
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}
