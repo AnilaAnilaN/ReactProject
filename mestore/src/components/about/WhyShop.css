@@ -1,0 +1,57 @@
+/* Section wrapper */
+.why-shop {
+  padding: 60px 20px;
+  background-color: var(--color-primary); /* Dark header blue/black */
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--color-accent); /* Amazon yellow */
+}
+
+/* Row layout */
+.why-shop-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.why-shop-card {
+  flex: 1;
+  min-width: 220px;
+  background-color: #1f1f1f; /* Slightly lighter than header */
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.why-shop-card:hover {
+  transform: translateY(-6px);
+}
+
+.why-shop-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--color-accent);
+}
+
+.why-shop-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
