@@ -1,0 +1,54 @@
+.admin-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: #f9f9f9;
+  padding: 20px;
+}
+
+.admin-login-form {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.admin-login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.admin-login-form .btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #ff9900; /* Amazon style */
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.admin-login-form .btn-submit:hover {
+  background: #e68a00;
+}
+
+.error-msg {
+  color: #d93025;
+  margin-bottom: 15px;
+}

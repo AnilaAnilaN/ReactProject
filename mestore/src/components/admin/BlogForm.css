@@ -1,0 +1,60 @@
+.blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.blog-form h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #222;
+}
+
+.blog-form input[type="text"],
+.blog-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.blog-form input[type="file"] {
+  font-size: 14px;
+}
+
+.blog-form button {
+  padding: 10px 15px;
+  border: none;
+  background: #28a745;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.blog-form button:hover {
+  background: #218838;
+}
+
+.loading-msg {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #007acc;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.success-msg {
+  color: #28a745;
+  margin-top: 10px;
+}
