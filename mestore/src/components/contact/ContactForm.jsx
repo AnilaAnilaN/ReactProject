@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
+import toast from "react-hot-toast";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,11 +17,31 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for contacting us!");
-    setFormData({ name: "", email: "", message: "" });
+    toast.loading("Sending message...", { id: "sendMsg" });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Message sent successfully!", { id: "sendMsg" });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error(result.error || "Failed to send message.", { id: "sendMsg" });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to connect to server.", { id: "sendMsg" });
+    }
   };
 
   return (
