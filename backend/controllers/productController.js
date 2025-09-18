@@ -1,38 +1,64 @@
-const Blog = require("../models/Blog");
+const Product = require("../models/Product");
+const { uploadToCloudinary } = require("../utils/cloudinary");
+const asyncHandler = require("../utils/asyncHandler");
+const checkExists = require("../utils/checkExists");
 
-// Create Blog Post
-const createBlog = async (req, res) => {
-  try {
-    const { title, content, author } = req.body;
+// Create new product
+const createProduct = asyncHandler(async (req, res) => {
+  const { name, description, price, category, stock } = req.body;
+  let imageUrl = "";
 
-    if (!title || !content) {
-      return res.status(400).json({ error: "Title and content are required" });
-    }
-
-    const newBlog = new Blog({
-      title,
-      content,
-      author: author || "Admin",
-      image: req.file?.path, // Cloudinary URL
-    });
-
-    await newBlog.save();
-    res.status(201).json({ message: "Blog created successfully", blog: newBlog });
-  } catch (error) {
-    console.error("Error creating blog:", error);
-    res.status(500).json({ error: "Server error" });
+  if (req.file) {
+    imageUrl = await uploadToCloudinary(req.file.path);
   }
-};
 
-// Get All Blogs
-const getBlogs = async (req, res) => {
-  try {
-    const blogs = await Blog.find().sort({ createdAt: -1 });
-    res.status(200).json(blogs);
-  } catch (error) {
-    console.error("Error fetching blogs:", error);
-    res.status(500).json({ error: "Server error" });
+  const newProduct = new Product({ name, description, price, category, stock, image: imageUrl });
+  await newProduct.save();
+  res.status(201).json(newProduct);
+});
+
+// Get all products
+const getProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find().sort({ createdAt: -1 });
+  res.status(200).json(products);
+});
+
+// Get single product by ID
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await checkExists(Product, req.params.id, res, "Product");
+  res.status(200).json(product);
+});
+
+// Update product
+const updateProduct = asyncHandler(async (req, res) => {
+  const { name, description, price, category, stock } = req.body;
+  const product = await checkExists(Product, req.params.id, res, "Product");
+
+  if (req.file) {
+    product.image = await uploadToCloudinary(req.file.path);
   }
-};
 
-module.exports = { createBlog, getBlogs };
+  product.name = name || product.name;
+  product.description = description || product.description;
+  product.price = price || product.price;
+  product.category = category || product.category;
+  product.stock = stock || product.stock;
+
+  await product.save();
+  res.status(200).json(product);
+});
+
+// Delete product
+const deleteProduct = asyncHandler(async (req, res) => {
+  await checkExists(Product, req.params.id, res, "Product");
+  await Product.findByIdAndDelete(req.params.id);
+  res.status(200).json({ message: "Product deleted successfully" });
+});
+
+module.exports = {
+  createProduct,
+  getProducts,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+};

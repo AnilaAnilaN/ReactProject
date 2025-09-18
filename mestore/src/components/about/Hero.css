@@ -9,6 +9,9 @@
   color: var(--color-text-light);
   text-align: center;
   padding: 80px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 .hero-content {

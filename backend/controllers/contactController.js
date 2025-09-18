@@ -1,22 +1,35 @@
+// backend/controllers/contactController.js
 const Contact = require("../models/Contact");
+const asyncHandler = require("../utils/asyncHandler");
+const checkExists = require("../utils/checkExists");
 
-const createContact = async (req, res) => {
-  try {
-    const { name, email, message } = req.body;
+// POST /api/contact
+const createContact = asyncHandler(async (req, res) => {
+  const { name, email, message, image } = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
-
-    // Save to DB only
-    const newContact = new Contact({ name, email, message });
-    await newContact.save();
-
-    res.status(201).json({ message: "Message saved successfully!" });
-  } catch (error) {
-    console.error("Error in contactController:", error);
-    res.status(500).json({ error: "Server error, please try again." });
+  if (!name || !email || !message) {
+    res.status(400);
+    throw new Error("All fields are required");
   }
-};
 
-module.exports = { createContact };
+  const newContact = new Contact({ name, email, message, image });
+  await newContact.save();
+
+  res.status(201).json({ message: "Message saved successfully!" });
+});
+
+// GET /api/contact (admin)
+const getContacts = asyncHandler(async (req, res) => {
+  const contacts = await Contact.find().sort({ createdAt: -1 });
+  res.json(contacts);
+});
+
+// PUT /api/contact/:id/read
+const markRead = asyncHandler(async (req, res) => {
+  const contact = await checkExists(Contact, req.params.id, res, "Message");
+  contact.read = true;
+  await contact.save();
+  res.json(contact);
+});
+
+module.exports = { createContact, getContacts, markRead };

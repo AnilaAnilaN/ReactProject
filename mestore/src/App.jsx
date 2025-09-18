@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage"; // Import HomePage
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminLogin from "./components/admin/AdminLogin";
 import BlogPage from "./pages/BlogPage";
 import BlogDetail from "./pages/BlogDetail";
-
+import ShopPage from "./pages/ShopPage";
 import "./App.css";
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
 
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<h1>Welcome to MeStore</h1>} />
+            <Route path="/" element={<HomePage />} /> {/* Render HomePage at root */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
              <Route path="/blogs" element={<BlogPage />} />
              <Route path="/blog" element={<BlogPage />} /> {/* alias */}
              <Route path="/blog/:id" element={<BlogDetail />} />
+             <Route path="/shop/" element={<ShopPage />} />
 
 
             {/* Admin route */}

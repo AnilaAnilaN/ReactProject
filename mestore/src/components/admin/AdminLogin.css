@@ -52,3 +52,15 @@
   color: #d93025;
   margin-bottom: 15px;
 }
+
+
+/* Responsive */
+@media (max-width: 480px) {
+  .admin-login-form {
+    padding: 30px 20px;
+  }
+
+  .admin-login-form h2 {
+    font-size: 1.5rem;
+  }
+}

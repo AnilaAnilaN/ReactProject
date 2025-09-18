@@ -1,0 +1,120 @@
+/* mestore/src/components/home/BlogsSection.css */
+.blogs-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+.blogs-section h2 {
+  font-size: 2.8em;
+  color: var(--color-text-dark);
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.blogs-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: 2px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+  background-color: var(--color-text-light);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-image {
+  max-width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.blog-title {
+  font-size: 1.5em;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
+  height: 1.2em; /* Limit to one line */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.blog-summary {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  height: 4.5em; /* Limit to three lines */
+  overflow: hidden;
+}
+
+.read-more-link {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.read-more-link:hover {
+  color: #e04e04;
+  text-decoration: underline;
+}
+
+.blogs-section .error-message {
+  color: red;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .blogs-section h2 {
+    font-size: 2.2em;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blogs-section {
+    padding: 40px 15px;
+  }
+
+  .blogs-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,52 @@
+.messages-list-container {
+  max-width: 700px;
+  margin: 36px auto;
+  padding: 22px;
+  background: #f7f7fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.messages-list-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #222;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.messages-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-card {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+  margin-bottom: 18px;
+  padding: 16px 20px;
+  transition: box-shadow 0.2s;
+}
+
+.message-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.message-card strong {
+  color: #444;
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+.message-meta {
+  color: #666;
+  font-size: 0.98rem;
+  margin-bottom: 6px;
+}
+
+.message-content {
+  color: #333;
+  font-size: 1rem;
+  margin-top: 4px;
+}

@@ -1,0 +1,67 @@
+/* mestore/src/components/home/ProductsSection.css */
+.products-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+.products-section h2 {
+  font-size: 2.8em;
+  color: var(--color-text-dark);
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.products-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: 2px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-section .error-message {
+  color: red;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .products-section h2 {
+    font-size: 2.2em;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-section {
+    padding: 40px 15px;
+  }
+
+  .products-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
