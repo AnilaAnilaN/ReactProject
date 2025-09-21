@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CategorySidebar from "../components/shop/CategorySidebar";
 import ProductGrid from "../components/shop/ProductGrid";
-import CheckoutForm from "../components/shop/CheckoutForm";
 import CheckoutPage from "../components/shop/CheckoutPage";
+import { CartContext } from '../context/CartProvider.jsx';
+import toast from 'react-hot-toast';
 import "./ShopPage.css";
 
 export default function ShopPage() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [buyNowProduct, setBuyNowProduct] = useState(null);
-  const [checkoutData, setCheckoutData] = useState(null);
   const [step, setStep] = useState("browse"); 
   const [showModal, setShowModal] = useState(false);
+
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,20 +30,19 @@ export default function ShopPage() {
 
   const handleBuyNow = (product) => {
     setBuyNowProduct(product);
-    setStep("form");
+    setStep("checkout"); // Directly go to checkout step
     setShowModal(true);
   };
 
-  const handleFormSubmit = (userData) => {
-    setCheckoutData(userData);
-    setStep("checkout");
+  const handleAddToCart = (product) => {
+    addToCart(product, 1); // Add 1 quantity of the product to cart
+    toast.success(`${product.name} added to cart!`);
   };
 
   const closeModal = () => {
     setShowModal(false);
     setStep("browse");
     setBuyNowProduct(null);
-    setCheckoutData(null);
   };
 
   return (
@@ -55,6 +56,7 @@ export default function ShopPage() {
           products={products}
           selectedCategory={selectedCategory}
           onBuy={handleBuyNow}
+          onAddToCart={handleAddToCart}
         />
       </div>
 
@@ -63,12 +65,8 @@ export default function ShopPage() {
           <div className="modal-content">
             <button className="modal-close" onClick={closeModal}>✖</button>
 
-            {step === "form" && buyNowProduct && (
-              <CheckoutForm product={buyNowProduct} onSubmit={handleFormSubmit} />
-            )}
-
-            {step === "checkout" && buyNowProduct && checkoutData && (
-              <CheckoutPage product={buyNowProduct} userData={checkoutData} />
+            {step === "checkout" && buyNowProduct && (
+              <CheckoutPage product={buyNowProduct} onDone={closeModal} />
             )}
           </div>
         </div>

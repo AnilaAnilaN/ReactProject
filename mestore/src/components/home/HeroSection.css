@@ -1,6 +1,6 @@
 /* mestore/src/components/home/HeroSection.css */
 .hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x800/131921/febd69?text=Hero+Background') no-repeat center center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), #333 no-repeat center center/cover;
   color: var(--color-text-light);
   height: 80vh; /* viewport height */
   display: flex;
@@ -8,6 +8,7 @@
   justify-content: center;
   text-align: center;
   padding: 0 20px;
+  border-radius: 10px;
 }
 
 .hero-content {

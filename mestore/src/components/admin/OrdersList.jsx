@@ -50,6 +50,7 @@ export default function OrdersList() {
                   >
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
                   </select>
                 </span> <br />
                 <span className="order-total"><strong>Total:</strong> ${order.total}</span>

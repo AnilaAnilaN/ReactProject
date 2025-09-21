@@ -8,6 +8,20 @@ const createProduct = asyncHandler(async (req, res) => {
   const { name, description, price, category, stock } = req.body;
   let imageUrl = "";
 
+  // Add validation for required fields and types
+  if (!name || !price || !category) {
+    res.status(400);
+    throw new Error("Please enter all required fields: name, price, category");
+  }
+  if (isNaN(price) || price <= 0) {
+    res.status(400);
+    throw new Error("Price must be a positive number");
+  }
+  if (isNaN(stock) || stock < 0) {
+    res.status(400);
+    throw new Error("Stock must be a non-negative number");
+  }
+
   if (req.file) {
     imageUrl = await uploadToCloudinary(req.file.path);
   }

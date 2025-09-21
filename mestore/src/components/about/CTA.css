@@ -24,7 +24,15 @@
   display: flex;
   gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: stretch; /* Ensures buttons have the same height */
+}
+
+.cta-buttons .btn {
+  flex: 1 1 auto; /* Allow buttons to grow and shrink */
+  min-width: 150px; /* Set a minimum width for smaller screens */
+  text-align: center;
+  display: inline-block; /* Ensure proper alignment */
+  width: auto; /* Let flexbox handle the width */
 }
 
 /* Buttons */

@@ -21,6 +21,8 @@ const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const contactRoutes = require("./routes/ContactRoutes");
 const unreadRoutes = require("./routes/unreadRoutes");
+const userRoutes = require("./routes/userRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 // Use routes
 app.use("/api/blogs", blogRoutes);
@@ -29,6 +31,8 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/unread", unreadRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/cart", cartRoutes);
 
 
 // 404 and error handling

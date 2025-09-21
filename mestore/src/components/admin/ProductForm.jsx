@@ -27,7 +27,8 @@ export default function ProductForm({ selectedProduct, onSaved }) {
   }, [selectedProduct]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: name === "price" || name === "stock" ? Number(value) : value });
   };
 
   const handleFileChange = (e) => {

@@ -11,6 +11,10 @@ import AdminLogin from "./components/admin/AdminLogin";
 import BlogPage from "./pages/BlogPage";
 import BlogDetail from "./pages/BlogDetail";
 import ShopPage from "./pages/ShopPage";
+import CartPage from "./pages/CartPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import AccountPage from "./pages/AccountPage";
+import CheckoutPage from "./components/shop/CheckoutPage";
 import "./App.css";
 
 function App() {
@@ -30,6 +34,10 @@ function App() {
              <Route path="/blog" element={<BlogPage />} /> {/* alias */}
              <Route path="/blog/:id" element={<BlogDetail />} />
              <Route path="/shop/" element={<ShopPage />} />
+             <Route path="/cart" element={<CartPage />} />
+             <Route path="/order-history" element={<OrderHistoryPage />} />
+             <Route path="/account" element={<AccountPage />} />
+             <Route path="/checkout" element={<CheckoutPage />} />
 
 
             {/* Admin route */}

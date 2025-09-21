@@ -15,8 +15,12 @@
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-accent); /* Changed to orange theme */
   cursor: pointer;
+}
+
+.logo a {
+  text-decoration: none;
 }
 
 /* Navigation */
@@ -74,24 +78,41 @@
 }
 
 /* Account */
-.account {
+.account-cart {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.account, .cart {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
 
-.account .icon {
-  font-size: 1.3rem;
+.header-btn {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-.account a {
+.header-btn:hover {
+  background-color: var(--color-accent-dark); /* Assuming a darker accent color for hover */
+  color: var(--color-text-light); /* Ensure text is visible on hover */
+}
+
+.account a, .cart a {
   text-decoration: none;
   color: var(--color-text-light);
   font-weight: 600;
 }
 
-.account a:hover {
+.account a:hover, .cart a:hover {
   color: var(--color-accent);
 }
 
@@ -141,7 +162,7 @@
     background-color: transparent;
   }
 
-  .account {
+  .account-cart {
     margin-top: 8px;
   }
 

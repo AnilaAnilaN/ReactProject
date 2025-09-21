@@ -11,13 +11,13 @@ const orderSchema = new mongoose.Schema({
   customer: {
     name: { type: String, required: true },
     email: { type: String, required: true },
-    phone: { type: String, required: true },
-    address: { type: String, required: true },
+    phone: { type: String, required: false },
+    address: { type: String, required: false },
   },
   items: [orderItemSchema],
   total: { type: Number, required: true },
   paymentMethod: { type: String, default: "COD" },
-  status: { type: String, enum: ["pending", "completed"], default: "pending" },
+  status: { type: String, enum: ["pending", "completed", "cancelled"], default: "pending" },
   read: { type: Boolean, default: false } // for admin notification badge
 }, { timestamps: true });
 
