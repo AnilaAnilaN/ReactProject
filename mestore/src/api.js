@@ -1,7 +1,8 @@
 // src/api.js
 import axios from "axios";
+
 const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: import.meta.env.PROD ? "https://your-production-api-url.com" : "http://localhost:5000",
   timeout: 15000
 });
 

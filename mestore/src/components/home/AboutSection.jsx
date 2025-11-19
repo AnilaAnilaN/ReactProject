@@ -1,6 +1,6 @@
 import React from 'react';
 import './AboutSection.css';
-import { Link } from 'react-router-dom'; // Assuming react-router-dom is used for navigation
+import { Link } from 'react-router-dom'; 
 
 export default function AboutSection() {
   return (
@@ -8,7 +8,7 @@ export default function AboutSection() {
       <div className="about-content">
         <h2>Our Story & Mission</h2>
         <p>
-          At [Your Store Name], we believe in more than just selling products; we're about creating experiences.
+          At MeStore, we believe in more than just selling products; we're about creating experiences.
           Our journey began with a simple idea: to offer high-quality items that bring joy and value to your life.
           Discover our commitment to excellence, sustainability, and customer satisfaction.
         </p>
