@@ -1,0 +1,14 @@
+{
+  "name": "mestore-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "cd backend && npm install && cd ../mestore && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd mestore && npm run dev\"",
+    "build": "cd mestore && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
