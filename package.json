@@ -1,14 +1,48 @@
 {
-  "name": "mestore-app",
+  "name": "ecommerce-site",
   "version": "1.0.0",
-  "private": true,
+  "description": "Full-stack e-commerce application",
+  "main": "backend/Server.js",
   "scripts": {
-    "install": "cd backend && npm install && cd ../mestore && npm install",
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd mestore && npm run dev\"",
-    "build": "cd mestore && npm run build",
-    "start": "cd backend && npm start"
+    "start": "node backend/Server.js",
+    "build": "cd backend && npm install && cd ../mestore && npm install && npm run build",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix mestore\""
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^1.41.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "@fortawesome/fontawesome-free": "^7.0.1",
+    "axios": "^1.12.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.10",
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.1.2"
   }
 }
