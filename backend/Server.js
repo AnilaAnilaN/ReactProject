@@ -34,6 +34,16 @@ app.use("/api/unread", unreadRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/cart", cartRoutes);
 
+const path = require('path');
+
+// Serve frontend for production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../mestore/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../mestore/dist/index.html'));
+  });
+}
 
 // 404 and error handling
 app.use((req, res, next) => {
